@@ -27,7 +27,6 @@ router.post("/send-email", (req, res) => {
       </footer>
     `,
   };
-  res.json(mailOptions);
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
