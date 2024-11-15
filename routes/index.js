@@ -12,24 +12,24 @@ const transporter = nodemailer.createTransport({
 
 router.post("/send-email", (req, res) => {
   const { name, email, message } = req.body;
-  res.json({ name: name, email: email, message: message });
 
-  // const mailOptions = {
-  //   from: process.env.EMAIL_USER,
-  //   to: process.env.EMAIL_USER,
-  //   name: name,
-  //   subject: `message de ${name}`,
-  //   message: message,
-  //   html: `
-  //   <h1>message de ${name}</h1>
-  //   <p style="font-size: 16px; line-height: 1.6;">${message}</p>
-  //   <p>email: ${email}</p>
-  //   <footer style="margin-top: 20px; font-style: italic; color: #555;">
-  //     <p>Merci de nous avoir contactés !</p>
-  //     <p>Cordialement, <br> L'équipe React Portfolio</p>
-  //   </footer>
-  // `,
-  // };
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    name: name,
+    subject: `message de ${name}`,
+    message: message,
+    html: `
+      <h1>message de ${name}</h1>
+      <p style="font-size: 16px; line-height: 1.6;">${message}</p>
+      <p>email: ${email}</p>
+      <footer style="margin-top: 20px; font-style: italic; color: #555;">
+        <p>Merci de nous avoir contactés !</p>
+        <p>Cordialement, <br> L'équipe React Portfolio</p>
+      </footer>
+    `,
+  };
+  res.json(mailOptions);
 
   // transporter.sendMail(mailOptions, (error, info) => {
   //   if (error) {
