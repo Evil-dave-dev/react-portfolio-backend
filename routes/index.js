@@ -2,9 +2,9 @@ var express = require("express");
 const nodemailer = require("nodemailer");
 var router = express.Router();
 
-router.get("/date", (req, res) => {
-  const date = new Date();
-  res.json({ now: date });
+router.post("/test", (req, res) => {
+  const { name, message } = req.body;
+  res.json({ name: name, message: message });
 });
 
 const transporter = nodemailer.createTransport({
